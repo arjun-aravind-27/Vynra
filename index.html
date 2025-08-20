@@ -86,6 +86,29 @@
   .hero h1{font-size:5.2rem;letter-spacing:-1.5px}
   .hero p{max-width:58ch;font-size:1.075rem;color:rgba(11,11,11,0.72)}
 
+  /* premium finish: stronger editorial feel */
+  body{background:linear-gradient(180deg,#fbfbfb,#ffffff)}
+  :root{--text:#050506;--muted:#6b7280}
+  .hero h1{font-size:5.8rem;line-height:0.98;letter-spacing:-2px}
+  .hero{padding:160px 18px 140px}
+  .hero-content{max-width:58ch;padding-left:22px}
+  .hero p:last-of-type{margin-top:6px;color:rgba(11,11,11,0.68)}
+
+  /* services as a responsive grid with elevated cards */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start}
+  .service{padding:26px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfbfb);box-shadow:0 18px 50px rgba(2,6,23,0.06);border:1px solid rgba(16,24,40,0.04)}
+  .service h3{font-size:1.05rem;margin-bottom:8px}
+  .service p{color:var(--muted)}
+
+  /* subtle accent on the hero card */
+  .hero-card{border-left:4px solid rgba(0,0,0,0.06);padding:30px}
+
+  /* stronger primary CTA */
+  .cta.primary{font-size:1.025rem;padding:16px 28px}
+
+  /* footer inner already defined; ensure it centers correctly */
+  .footer-inner{max-width:900px;margin:0 auto;color:var(--muted);text-align:center}
+
   /* eyebrow microcopy */
   .eyebrow{font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 
@@ -193,38 +216,30 @@
   <main id="main">
   <section class="hero">
     <div class="hero-grid">
-      <div class="hero-content">
-      <h1>Vynra</h1>
-  <h2>Growth Engine for Ambitious Businesses</h2>
-  <p>We design marketing and automation systems that generate predictable revenue and attract high-value clients.</p>
+  <div class="hero-content">
+  <h1>Vynra</h1>
+  <h2>Growth Engine for Dental Practices</h2>
+  <p>We help dentists book more high-value patients</p>
+  <p>Using paid ads that attract qualified Invisalign, implant, and veneer leads.</p>
           <div class="hero-actions">
             <a class="cta primary" href="#contact">Get Started</a>
           </div>
       </div>
       <aside class="hero-card" aria-hidden="false">
         <div class="card-inner">
-          <div class="case-title">Partner with Vynra to turn your growth-stage business into a market leader.</div>
-          <div class="case-desc">We create repeatable systems that deliver measurable results.</div>
-          
+          <div class="case-title">We run targeted paid ads that fill your calendar with high-value patients.</div>
+          <div class="case-desc">End-to-end Facebook &amp; Google campaigns for Invisalign, implants, and veneers — managed, optimized, and measured.</div>
         </div>
       </aside>
     </div>
   </section>
 
   <section id="services">
-    <h2>Our Services</h2>
+    <h2>Why Paid Ads?</h2>
     <div class="services">
       <div class="service">
-        <h3>Predictable Pipeline</h3>
-        <p>Consistently generate qualified leads every month — no guesswork.</p>
-      </div>
-      <div class="service">
-        <h3>Automated Growth</h3>
-  <p>Custom funnels and workflows that convert automatically.</p>
-      </div>
-      <div class="service">
-        <h3>Premium Positioning</h3>
-        <p>Position your brand to command higher prices and retain your most valuable clients.</p>
+        <h3>Paid Ads Work</h3>
+        <p>Targeted Facebook &amp; Google campaigns put your practice in front of patients searching for Invisalign, implants, and veneers — and turn searches into booked appointments.</p>
       </div>
     </div>
   </section>
@@ -232,19 +247,19 @@
   </section>
 
   <section id="about">
-    <h2>About Vynra</h2>
+    <h2>Why Dentists Choose Us</h2>
     <p style="text-align:center; max-width:800px; margin:auto;">
-      Vynra is a forward-thinking marketing agency focused on results. We combine branding, automation, and lead generation to accelerate business growth and maximize ROI.
+      Patients looking for implants, Invisalign, and veneers don’t just “show up.” We build ad campaigns that put your practice in front of them before your competitors.
     </p>
   </section>
 
   </section>
 
   <section id="contact">
-    <h2 id="contact-heading">Contact Us</h2>
-    <p class="contact-note">Email us directly: <strong>arjun@vynra.agency</strong></p>
+    <h2 id="contact-heading">Get Started</h2>
+    <p class="contact-note">Email: <strong>arjun@vynra.agency</strong></p>
     <div style="text-align:center;margin-top:8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="contact-cta">
-  <a class="cta primary calendly-btn" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer" aria-label="Open Calendly to schedule a 25 minute meeting">Schedule a 25‑minute meeting</a>
+      <a class="cta primary calendly-btn" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer" aria-label="Schedule a 25 minute call">Schedule a 25‑minute call</a>
     </div>
   </section>
 
