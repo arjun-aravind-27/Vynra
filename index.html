@@ -14,8 +14,6 @@
   <meta name="theme-color" content="#ffffff">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <!-- Calendly widget styles (used for popup behavior) -->
-  <link href="https://assets.calendly.com/styles/widget.css" rel="stylesheet">
   <style>
     /* Reset & base */
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
@@ -245,8 +243,8 @@
   <section id="contact">
     <h2 id="contact-heading">Contact Us</h2>
     <p class="contact-note">Email us directly: <strong>arjun@vynra.agency</strong></p>
-    <div style="text-align:center;margin-top:8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <button class="cta primary calendly-btn" type="button" onclick="openCalendlyPopup()" aria-label="Open Calendly to schedule a 25 minute meeting">Schedule a 25‑minute meeting</button>
+    <div style="text-align:center;margin-top:8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="contact-cta">
+  <a class="cta primary calendly-btn" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer" aria-label="Open Calendly to schedule a 25 minute meeting">Schedule a 25‑minute meeting</a>
     </div>
   </section>
 
@@ -277,23 +275,6 @@
   // Minimal JS kept.
   </script>
 
-  <!-- Calendly popup script -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script>
-    function openCalendlyPopup(){
-      if(window.Calendly && Calendly.initPopupWidget){
-        Calendly.initPopupWidget({url:'https://calendly.com/arjun-vynra/25min'});
-      }else{
-        // fallback: open in new tab
-        window.open('https://calendly.com/arjun-vynra/25min','_blank','noopener');
-      }
-    }
-    // allow keyboard activation for accessibility
-    document.addEventListener('click', function(e){
-      if(e.target && e.target.classList && e.target.classList.contains('calendly-btn')){
-        openCalendlyPopup();
-      }
-    })
-  </script>
+  <!-- Calendly: simple link opens in a new tab; popup removed per user request -->
 </body>
 </html>
