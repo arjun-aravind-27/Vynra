@@ -14,6 +14,8 @@
   <meta name="theme-color" content="#ffffff">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Calendly widget styles (used for popup behavior) -->
+  <link href="https://assets.calendly.com/styles/widget.css" rel="stylesheet">
   <style>
     /* Reset & base */
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
@@ -73,6 +75,38 @@
   /* stronger primary CTA */
   .cta{padding:12px 20px;border-radius:10px;background:var(--text);box-shadow:0 10px 30px rgba(2,6,23,0.06)}
   .cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(11,11,11,0.06)}
+
+  /* Premium adjustments */
+  /* subtle frosted header, slightly larger logo, tighter nav */
+  header{background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(16,24,40,0.04)}
+  header img{height:56px}
+  nav a{padding:10px 14px;font-size:0.95rem;letter-spacing:1px;text-transform:uppercase;color:rgba(11,11,11,0.6)}
+  nav a:hover{color:var(--text);transform:translateY(-3px)}
+
+  /* stronger, more editorial hero */
+  .hero{padding:140px 18px 120px}
+  .hero h1{font-size:5.2rem;letter-spacing:-1.5px}
+  .hero p{max-width:58ch;font-size:1.075rem;color:rgba(11,11,11,0.72)}
+
+  /* eyebrow microcopy */
+  .eyebrow{font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+
+  /* contact note and footer classes to remove inline styles */
+  .contact-note{text-align:center;color:var(--muted);margin-bottom:18px}
+  .footer-inner{max-width:900px;margin:0 auto;color:var(--muted)}
+
+  /* ensure button elements styled like anchors */
+  button.cta{font:inherit;border:none;background:transparent;color:inherit;cursor:pointer;text-decoration:none}
+
+  /* elevated card and refined spacing */
+  .hero-card{padding:28px;border-radius:14px;box-shadow:0 20px 50px rgba(2,6,23,0.06);border:1px solid rgba(16,24,40,0.04)}
+
+  /* pill CTAs */
+  .cta.primary{background:var(--text);color:#fff;padding:14px 24px;border-radius:999px;box-shadow:0 14px 40px rgba(2,6,23,0.08);transition:transform .12s,box-shadow .12s}
+  .cta.primary:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(2,6,23,0.12)}
+  .cta.secondary{padding:12px 20px;border-radius:999px}
+
+  footer{padding:48px 20px}
 
   /* Entrance animations (reduced-motion safe) */
   .hero h1,.hero h2{opacity:0;transform:translateY(6px)}
@@ -162,11 +196,11 @@
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-content">
-  <h1>Vynra</h1>
-  <h2>Growth Engine for Ambitious Brands</h2>
+      <h1>Vynra</h1>
+  <h2>Growth Engine for Ambitious Businesses</h2>
   <p>We design marketing and automation systems that generate predictable revenue and attract high-value clients.</p>
           <div class="hero-actions">
-            <a class="cta" href="#contact">Get Started</a>
+            <a class="cta primary" href="#contact">Get Started</a>
           </div>
       </div>
       <aside class="hero-card" aria-hidden="false">
@@ -177,8 +211,6 @@
         </div>
       </aside>
     </div>
-  </section>
-
   </section>
 
   <section id="services">
@@ -212,7 +244,10 @@
 
   <section id="contact">
     <h2 id="contact-heading">Contact Us</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:18px;">Email us directly: <strong>arjun@vynra.agency</strong></p>
+    <p class="contact-note">Email us directly: <strong>arjun@vynra.agency</strong></p>
+    <div style="text-align:center;margin-top:8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="cta primary calendly-btn" type="button" onclick="openCalendlyPopup()" aria-label="Open Calendly to schedule a 25 minute meeting">Schedule a 25‑minute meeting</button>
+    </div>
   </section>
 
   <footer>
@@ -240,6 +275,25 @@
   </script>
   <script>
   // Minimal JS kept.
+  </script>
+
+  <!-- Calendly popup script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    function openCalendlyPopup(){
+      if(window.Calendly && Calendly.initPopupWidget){
+        Calendly.initPopupWidget({url:'https://calendly.com/arjun-vynra/25min'});
+      }else{
+        // fallback: open in new tab
+        window.open('https://calendly.com/arjun-vynra/25min','_blank','noopener');
+      }
+    }
+    // allow keyboard activation for accessibility
+    document.addEventListener('click', function(e){
+      if(e.target && e.target.classList && e.target.classList.contains('calendly-btn')){
+        openCalendlyPopup();
+      }
+    })
   </script>
 </body>
 </html>
