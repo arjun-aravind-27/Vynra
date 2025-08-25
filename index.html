@@ -1,295 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vynra Marketing</title>
-  <link rel="icon" href="VynraLogo.png" type="image/png">
-  <!-- Favicons: use VynraLogo.png as a fallback; replace with generated .ico and sizes for production -->
-  <link rel="apple-touch-icon" sizes="180x180" href="VynraLogo.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="VynraLogo.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="VynraLogo.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="shortcut icon" href="favicon.ico">
-  <meta name="theme-color" content="#ffffff">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vynra — AI Receptionist & Automation for Gyms</title>
+  <meta name="description" content="Vynra sets up an AI receptionist and custom automations for gyms & fitness clubs: 24/7 booking, reminders that cut no‑shows, FAQs, lane/facility reservations, waitlists, onboarding, and more." />
+  <meta name="theme-color" content="#00111c" />
+  <meta name="color-scheme" content="light" />
+  <meta property="og:title" content="Vynra — AI Receptionist & Automation for Gyms" />
+  <meta property="og:description" content="Book trials & classes on autopilot. Automate reservations, reminders, FAQs, and more." />
+  <meta property="og:image" content="VynraLogo.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Icons -->
+  <link rel="icon" href="VynraLogo.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="VynraLogo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="VynraLogo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="VynraLogo.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <style>
-    /* Reset & base */
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
     :root{
-      /* Black & white premium palette */
-      --bg1:#ffffff;--bg2:#ffffff;--primary:#000000;--primary-2:#111111;--text:#0b0b0b;--muted:#6b7280;--glass:rgba(0,0,0,0.03);
-      --card-bg:#ffffff;--radius:10px
+      --accent:#00111c; /* brand */
+      --bg1:#fbfbfb;--bg2:#ffffff;--text:#0a0a0a;--muted:#6b7280;--border:rgba(0,0,0,0.08);
+      --card:#ffffff;--radius:14px;--shadow:0 14px 40px rgba(2,6,23,.06)
     }
-    html,body{height:100%}
-    body{
-      background: linear-gradient(180deg,var(--bg1),var(--bg2));
-      color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.45
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+    img{max-width:100%;display:block}
+    a{color:inherit}
 
-  /* typography tokens */
-  :root{--measure:66ch;--scale-1:1rem;--scale-2:1.125rem;--scale-3:1.25rem}
+    /* Header */
+    header{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);background:rgba(255,255,255,.75);border-bottom:1px solid var(--border)}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;justify-content:space-between;align-items:center;height:68px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:40px;width:40px;border-radius:10px}
+    .brand-name{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:.95rem;color:var(--accent)}
+    .links{display:flex;gap:14px}
+    .links a{text-decoration:none;padding:8px 10px;border-radius:8px;color:rgba(0,17,28,.72);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:.9rem}
+    .links a:hover{background:rgba(0,17,28,.06)}
 
-  /* accessibility helpers */
-  .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
-
-  /* focus styles */
-  a:focus,button:focus,input:focus,textarea:focus{outline:3px solid #000;outline-offset:3px}
-
-  /* minimal, no animations for a professional feel */
-
-  header{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:22px 40px;background:transparent}
-  header .brand{display:flex;align-items:center;gap:14px}
-  header img{height:48px;width:auto;border-radius:8px;box-shadow:0 8px 24px rgba(2,6,23,0.04);transform:translateZ(0)}
-  .brand-name{font-weight:700;font-family:'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--text);font-size:0.95rem}
-  header .nav-cta{margin-left:16px}
-    @keyframes logo-spin{0%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
-  nav{display:flex;gap:8px}
-  nav a{margin-left:10px;text-decoration:none;color:var(--muted);font-weight:700;padding:8px 12px;border-radius:6px;transition:all .12s}
-  nav a:hover{transform:translateY(-2px);color:var(--text)}
-  .btn-primary{background:var(--text);padding:8px 14px;border-radius:6px;color:#fff;font-weight:700;border:none}
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:2px solid var(--accent);font-weight:800;text-decoration:none}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.secondary{background:transparent;color:var(--accent)}
 
     /* Hero */
-  .hero{position:relative;z-index:2;padding:120px 18px 110px}
-  .hero-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:center}
-  .hero-content{text-align:left}
-  .hero h1{font-family:'Playfair Display',serif;font-size:4.6rem;line-height:1;letter-spacing:-1px;margin-bottom:12px;color:var(--text);font-weight:700}
-  .hero p{font-size:1.05rem;color:var(--muted);max-width:62ch;margin-bottom:28px}
-  /* ensure heading and subheading share exact left alignment */
-  .hero-content h1,.hero-content h2{margin-left:0;margin-right:0;padding-left:0}
-  .cta{display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:6px;color:#fff;text-decoration:none;font-weight:700;background:var(--text);border:none}
-  .cta:hover{transform:translateY(-3px)}
+    .hero{padding:90px 0 60px}
+    .grid{display:grid;grid-template-columns:1.25fr .9fr;gap:36px;align-items:center}
+    h1{font-family:'Playfair Display',serif;font-size:3.6rem;line-height:1;letter-spacing:-1px;margin-bottom:12px;color:var(--accent)}
+    .sub{font-size:1.12rem;color:rgba(10,10,10,.78)}
+    .hero-actions{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .card{padding:22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .kicker{font-size:.85rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 
-  /* premium header brand text */
-  .brand-name{font-weight:700;font-family:'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--text);font-size:0.95rem}
+    /* Sections */
+    section{padding:60px 0}
+    h2{text-align:center;font-size:2rem;margin-bottom:14px;color:var(--accent)}
+    .lead{text-align:center;max-width:70ch;margin:0 auto 20px;color:rgba(10,10,10,.72)}
 
-  /* subtle hero accent and constrained measure */
-  .hero-content{position:relative;padding-left:18px;max-width:66ch}
-  .hero-content:before{content:'';position:absolute;left:0;top:12px;width:4px;height:56px;background:var(--text);opacity:0.06;border-radius:2px}
+    /* Features & Solutions */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{background:#fff;padding:20px;border-radius:var(--radius);border:1px solid var(--border)}
+    .feature h3{font-size:1.02rem;margin-bottom:6px;color:var(--accent)}
+    .feature p{color:var(--muted)}
 
-  .hero h2{font-family:'Inter',sans-serif;font-size:1.15rem;color:var(--primary-2);font-weight:600;margin-bottom:18px}
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .step{background:#fff;padding:20px;border:1px solid var(--border);border-radius:var(--radius)}
+    .num{display:inline-block;font-weight:800;border:1px solid var(--border);border-radius:999px;padding:4px 10px;margin-bottom:8px;color:var(--accent)}
 
-  /* stronger primary CTA */
-  .cta{padding:12px 20px;border-radius:10px;background:var(--text);box-shadow:0 10px 30px rgba(2,6,23,0.06)}
-  .cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(11,11,11,0.06)}
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .plan{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .plan h3{margin-bottom:4px;color:var(--accent)}
+    .price{font-weight:800;font-size:1.2rem;margin:6px 0 10px}
+    .small{color:var(--muted);font-size:.95rem}
+    .plan ul{margin:10px 0 0 18px}
+    .plan li{margin:6px 0}
 
-  /* Premium adjustments */
-  /* subtle frosted header, slightly larger logo, tighter nav */
-  header{background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(16,24,40,0.04)}
-  header img{height:56px}
-  nav a{padding:10px 14px;font-size:0.95rem;letter-spacing:1px;text-transform:uppercase;color:rgba(11,11,11,0.6)}
-  nav a:hover{color:var(--text);transform:translateY(-3px)}
+    /* FAQ */
+    .faq{max-width:900px;margin:0 auto}
+    details{border:1px solid var(--border);background:#fff;border-radius:var(--radius);padding:14px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:800;color:var(--accent)}
+    details p{margin-top:8px;color:var(--muted)}
 
-  /* stronger, more editorial hero */
-  .hero{padding:140px 18px 120px}
-  .hero h1{font-size:5.2rem;letter-spacing:-1.5px}
-  .hero p{max-width:58ch;font-size:1.075rem;color:rgba(11,11,11,0.72)}
+    /* Contact */
+    .contact{text-align:center}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 
-  /* premium finish: stronger editorial feel */
-  body{background:linear-gradient(180deg,#fbfbfb,#ffffff)}
-  :root{--text:#050506;--muted:#6b7280}
-  .hero h1{font-size:5.8rem;line-height:0.98;letter-spacing:-2px}
-  .hero{padding:160px 18px 140px}
-  .hero-content{max-width:58ch;padding-left:22px}
-  .hero p:last-of-type{margin-top:6px;color:rgba(11,11,11,0.68)}
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);text-align:center}
 
-  /* services as a responsive grid with elevated cards */
-  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start}
-  .service{padding:26px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfbfb);box-shadow:0 18px 50px rgba(2,6,23,0.06);border:1px solid rgba(16,24,40,0.04)}
-  .service h3{font-size:1.05rem;margin-bottom:8px}
-  .service p{color:var(--muted)}
-
-  /* subtle accent on the hero card */
-  .hero-card{border-left:4px solid rgba(0,0,0,0.06);padding:30px}
-
-  /* stronger primary CTA */
-  .cta.primary{font-size:1.025rem;padding:16px 28px}
-
-  /* footer inner already defined; ensure it centers correctly */
-  .footer-inner{max-width:900px;margin:0 auto;color:var(--muted);text-align:center}
-
-  /* eyebrow microcopy */
-  .eyebrow{font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-
-  /* contact note and footer classes to remove inline styles */
-  .contact-note{text-align:center;color:var(--muted);margin-bottom:18px}
-  .footer-inner{max-width:900px;margin:0 auto;color:var(--muted)}
-
-  /* ensure button elements styled like anchors */
-  button.cta{font:inherit;border:none;background:transparent;color:inherit;cursor:pointer;text-decoration:none}
-
-  /* elevated card and refined spacing */
-  .hero-card{padding:28px;border-radius:14px;box-shadow:0 20px 50px rgba(2,6,23,0.06);border:1px solid rgba(16,24,40,0.04)}
-
-  /* pill CTAs */
-  .cta.primary{background:var(--text);color:#fff;padding:14px 24px;border-radius:999px;box-shadow:0 14px 40px rgba(2,6,23,0.08);transition:transform .12s,box-shadow .12s}
-  .cta.primary:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(2,6,23,0.12)}
-  .cta.secondary{padding:12px 20px;border-radius:999px}
-
-  footer{padding:48px 20px}
-
-  /* Entrance animations (reduced-motion safe) */
-  .hero h1,.hero h2{opacity:0;transform:translateY(6px)}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-  .animations-enabled .hero h1{animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) .08s both}
-  .animations-enabled .hero h2{animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) .22s both}
-
-  /* hero card refinement */
-  .hero-card{padding:26px;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.04);border:1px solid rgba(16,24,40,0.04)}
-  .hero-card .case-desc{color:var(--muted);font-size:0.95rem}
-
-  /* services polish */
-  .service{background:#fff;transition:transform .18s,box-shadow .18s;border-left:4px solid #000}
-  .service:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(2,6,23,0.04)}
-
-  /* testimonial */
-  .testimonial{margin-top:14px;padding-top:12px;border-top:1px solid rgba(16,24,40,0.04);width:100%}
-  .testimonial blockquote{font-style:italic;color:var(--text);opacity:0.92;margin:0 0 8px 0;padding-left:12px;border-left:3px solid rgba(11,11,11,0.06)}
-  .testimonial .author{font-size:0.9rem;color:var(--muted)}
-
-  /* footer refinement */
-  footer{border-top:1px solid rgba(16,24,40,0.04);background:transparent;padding:36px 20px}
-  footer .legal{color:var(--muted);font-size:0.9rem}
-
-  /* hero helpers */
-  .hero-actions{display:flex;gap:12px;align-items:center;margin-top:18px}
-
-  .hero-card{border-radius:var(--radius);padding:22px;background:var(--card-bg);border:1px solid rgba(16,24,40,0.06);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-  .hero-card .case-title{font-weight:700;color:var(--text);font-size:1rem}
-  .hero-card .case-desc{color:var(--muted);font-size:0.95rem;font-style:italic}
-  .hero-card .card-inner{margin-top:2px}
-
-    /* Glassy sections */
-  section{padding:72px 20px;max-width:1200px;margin:0 auto;position:relative;z-index:2}
-  h2{font-size:2rem;color:var(--text);text-align:center;margin-bottom:20px}
-  /* ensure hero subtitle is left-aligned with the H1 */
-  .hero-content h2{ text-align:left; }
-  .services{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
-  .service{flex:1 1 300px;padding:20px;border-radius:8px;background:#fff;border-left:4px solid #000;border-bottom:1px solid rgba(16,24,40,0.04);text-align:left}
-    .service h3{font-size:1.05rem;margin-bottom:10px;color:var(--text);font-weight:700}
-    .service p{color:var(--muted);line-height:1.5}
-
-    /* Contact form */
-  form{max-width:720px;margin:auto;display:flex;flex-direction:column;gap:14px}
-  .field{padding:12px;border-radius:8px;border:1px solid rgba(16,24,40,0.06);background:#fff;color:var(--text);outline:none;transition:box-shadow .08s}
-  .field:focus{box-shadow:0 8px 20px rgba(16,24,40,0.06)}
-  .field::placeholder{color:rgba(71,85,105,0.4)}
-  .btn-submit{padding:10px 16px;border-radius:8px;border:2px solid var(--text);background:transparent;color:var(--text);font-weight:700;cursor:pointer}
-
-  /* subtle toast */
-  .toast{position:fixed;right:24px;bottom:24px;background:#111827;color:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 8px 20px rgba(16,24,40,0.06);opacity:0;transform:translateY(12px);transition:opacity .18s,transform .18s;z-index:999}
-  .toast.show{opacity:1;transform:translateY(0)}
-
-    footer{position:relative;z-index:2;background:transparent;color:var(--muted);text-align:center;padding:40px 20px;font-size:0.95rem}
-
-    /* responsive */
-  @media (max-width:1000px){.hero-grid{grid-template-columns:1fr 320px}}
-  @media (max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:22px}
-    .hero{padding:80px 18px 60px}
-    .hero h1{font-size:2rem}
-    .hero h2{font-size:1.05rem}
-    .hero p{font-size:1rem}
-    .hero-card{order:2;margin:0 auto}
-  }
-  @media (max-width:420px){
-    .hero h1{font-size:1.6rem}
-    .hero h2{font-size:1rem}
-    .hero p{font-size:0.95rem}
-  }
-  @media (prefers-reduced-motion:reduce){header img,cta{animation:none;transition:none}}
+    /* Responsive */
+    @media (max-width:980px){
+      .grid,.grid-3,.steps,.pricing{grid-template-columns:1fr}
+      h1{font-size:2.4rem}
+    }
+    @media (prefers-reduced-motion:reduce){*{animation:none;transition:none}}
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="brand">
-      <img src="VynraLogo.png" alt="Vynra" title="Vynra" aria-hidden="true">
-      <div style="display:none">Vynra</div>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="VynraLogo.png" alt="Vynra logo" />
+        <span class="brand-name">Vynra</span>
+      </div>
+      <nav class="links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn secondary" style="padding:6px 12px">Contact</a>
+      </nav>
     </div>
-    <nav aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <main id="main">
-  <section class="hero">
-    <div class="hero-grid">
-  <div class="hero-content">
-  <h1>Vynra</h1>
-  <h2>Growth Engine for Dental Practices</h2>
-  <p>We help dentists book more high-value patients</p>
-  <p>Using paid ads that attract qualified Invisalign, implant, and veneer patients.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap grid">
+        <div>
+          <div class="kicker">AI for Gyms & Fitness Clubs</div>
+          <h1>Book trials & classes on autopilot — and automate the rest.</h1>
+          <p class="sub">Never miss a signup again. Vynra sets up an <strong>AI receptionist</strong> and <strong>custom automations</strong> that answer FAQs, book trials & memberships 24/7, and send reminders that cut no‑shows — across your website, SMS, Facebook, and Instagram. We can also automate reservations, waitlists, onboarding, billing nudges, and more to fit your club.</p>
           <div class="hero-actions">
-            <a class="cta primary" href="#contact">Get Started</a>
+            <a class="btn primary" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer">Schedule a 25‑minute call</a>
+            <a class="btn secondary" href="#features">See how it works</a>
           </div>
-      </div>
-      <aside class="hero-card" aria-hidden="false">
-        <div class="card-inner">
-          <div class="case-title">We run targeted paid ads that fill your calendar with high-value patients.</div>
-          <div class="case-desc">End-to-end Facebook &amp; Google campaigns for Invisalign, implants, and veneers — managed, optimized, and measured.</div>
         </div>
-      </aside>
-    </div>
-  </section>
-
-  <section id="services">
-    <h2>Why Paid Ads?</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Paid Ads Work</h3>
-        <p>Targeted Facebook &amp; Google campaigns put your practice in front of patients searching for Invisalign, implants, and veneers — and turn searches into booked appointments.</p>
+        <aside class="card" aria-hidden="false">
+          <div class="kicker">Why gyms choose Vynra</div>
+          <h3 style="margin:0 0 6px 0;color:var(--accent)">Front‑desk help, without the payroll.</h3>
+          <p style="color:var(--muted)">Owners tell us the same story: missed calls, DMs piling up, coaches stuck doing admin. Our AI receptionist handles conversations and books the spot — even after hours — while automations clean up the rest.</p>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  </section>
+    <!-- Features -->
+    <section id="features">
+      <div class="wrap">
+        <h2>What you get</h2>
+        <p class="lead">Everything you need to capture interest, convert it into bookings, and keep classes full.</p>
+        <div class="grid-3" role="list">
+          <div class="feature" role="listitem"><h3>24/7 Booking</h3><p>Website, SMS, Facebook, and Instagram — prospects can book instantly, any time.</p></div>
+          <div class="feature" role="listitem"><h3>No‑Show Reduction</h3><p>Automatic reminders via text/email. Smart follow‑ups to rebook cancellations.</p></div>
+          <div class="feature" role="listitem"><h3>FAQ Automation</h3><p>Pricing, schedules, drop‑ins, parking — answered consistently so coaches can coach.</p></div>
+          <div class="feature" role="listitem"><h3>Lead Capture & Handoffs</h3><p>Every conversation is saved. Hot leads handed to staff or pushed into your CRM.</p></div>
+          <div class="feature" role="listitem"><h3>Owner Controls</h3><p>Responses and escalation rules tailored to your voice and policies.</p></div>
+          <div class="feature" role="listitem"><h3>Integrations</h3><p>Works with Calendly, Mindbody, Zen Planner, Google Calendar, and more.</p></div>
+        </div>
+      </div>
+    </section>
 
-  <section id="about">
-    <h2>Why Dentists Choose Us</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">
-      Patients looking for implants, Invisalign, and veneers don’t just “show up.” We build ad campaigns that put your practice in front of them before your competitors.
-    </p>
-  </section>
+    <!-- Solutions beyond the receptionist -->
+    <section id="solutions">
+      <div class="wrap">
+        <h2>Solutions beyond the receptionist</h2>
+        <p class="lead">Need more than bookings? We build automations that reduce admin and keep members happy.</p>
+        <div class="grid-3" role="list">
+          <div class="feature" role="listitem"><h3>Lane & Facility Reservations</h3><p>Self‑serve bookings for lanes, courts, or equipment with confirmations and limits.</p></div>
+          <div class="feature" role="listitem"><h3>Waitlists & Backfills</h3><p>Auto‑manage waitlists and fill dropped spots so capacity isn’t wasted.</p></div>
+          <div class="feature" role="listitem"><h3>Member Onboarding</h3><p>Welcome sequences, waivers, and first‑visit tips via SMS or email.</p></div>
+          <div class="feature" role="listitem"><h3>Billing Nudges</h3><p>Friendly reminders for expiring cards or overdue payments with links to pay.</p></div>
+          <div class="feature" role="listitem"><h3>Feedback & NPS</h3><p>Automated post‑visit surveys to spot issues early and collect testimonials.</p></div>
+          <div class="feature" role="listitem"><h3>Smart Escalations</h3><p>Route edge cases to the right person by SMS/Slack with the chat context.</p></div>
+        </div>
+      </div>
+    </section>
 
-  </section>
+    <!-- How it works -->
+    <section id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="lead">We do the setup. You get a concierge that never sleeps.</p>
+        <div class="steps" role="list">
+          <div class="step" role="listitem"><span class="num">1</span><h3>Map your flows</h3><p>We capture offers, schedules, pricing rules, FAQs, and escalation logic in a 30‑minute intake.</p></div>
+          <div class="step" role="listitem"><span class="num">2</span><h3>Connect & customize</h3><p>We integrate your booking tools and publish the assistant with your brand voice.</p></div>
+          <div class="step" role="listitem"><span class="num">3</span><h3>Launch & iterate</h3><p>We monitor conversations, improve replies, and tune reminders to maximize show‑ups.</p></div>
+        </div>
+        <p class="lead" style="margin-top:16px">Common integrations: <strong>Calendly</strong>, <strong>Mindbody</strong>, <strong>Zen Planner</strong>, <strong>Google Calendar</strong>, <strong>Meta (FB/IG) DMs</strong>, <strong>SMS</strong>.</p>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2 id="contact-heading">Get Started</h2>
-    <p class="contact-note">Email: <strong>arjun@vynra.agency</strong></p>
-    <div style="text-align:center;margin-top:8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="contact-cta">
-      <a class="cta primary calendly-btn" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer" aria-label="Schedule a 25 minute call">Schedule a 25‑minute call</a>
-    </div>
-  </section>
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="wrap">
+        <h2>Simple pricing</h2>
+        <p class="lead">Transparent ballparks. Exact quote after a quick scoping call.</p>
+        <div class="pricing">
+          <div class="plan">
+            <h3>Starter</h3>
+            <div class="price">Setup ≈ $750 · $250/mo</div>
+            <p class="small">AI receptionist + reminders</p>
+            <ul>
+              <li>Website + IG/FB DMs + SMS</li>
+              <li>24/7 booking & FAQ automation</li>
+              <li>Confirmation & reminder messages</li>
+              <li>Basic analytics (monthly summary)</li>
+            </ul>
+            <div style="margin-top:12px"><a class="btn primary" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer">Get started</a></div>
+          </div>
+          <div class="plan" style="outline:3px solid rgba(0,17,28,.08)">
+            <h3>Growth</h3>
+            <div class="price">Setup ≈ $1,000 · $400/mo</div>
+            <p class="small">Receptionist + 2 custom automations</p>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Choose two: waitlists, lane reservations, onboarding, billing nudges</li>
+              <li>Priority tweaks & monthly optimization</li>
+            </ul>
+            <div style="margin-top:12px"><a class="btn primary" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer">Book a call</a></div>
+          </div>
+          <div class="plan">
+            <h3>Pro</h3>
+            <div class="price">Setup ≈ $1,200+ · $500/mo</div>
+            <p class="small">Receptionist + up to 5 automations</p>
+            <ul>
+              <li>Everything in Growth</li>
+              <li>Quarterly reviews & enhancements</li>
+              <li>Team training & playbooks</li>
+            </ul>
+            <div style="margin-top:12px"><a class="btn primary" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer">Plan a rollout</a></div>
+          </div>
+        </div>
+        <p class="small" style="text-align:center;margin-top:10px">Prices are typical ranges; final totals depend on integrations & scope.</p>
+      </div>
+    </section>
 
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>Is this a chatbot or a human service?</summary>
+            <p>It’s an AI assistant configured for your gym. It answers common questions, books sessions, and escalates to your team when needed.</p>
+          </details>
+          <details>
+            <summary>Do I need new software?</summary>
+            <p>No. We plug into the tools you already use. If you don’t have a booking tool, we’ll set up a simple one for you.</p>
+          </details>
+          <details>
+            <summary>Can you build other automations (e.g., lane reservations)?</summary>
+            <p>Yes. Many clubs start with the receptionist and add flows like lane reservations, waitlists, onboarding, billing nudges, or post‑visit surveys. We scope these during a short intake.</p>
+          </details>
+          <details>
+            <summary>What about accuracy, tone, and privacy?</summary>
+            <p>We train on your policies, pricing ranges, and voice. Logs are reviewed to refine responses. We only collect the data needed to book and follow up, and you can request deletion at any time.</p>
+          </details>
+          <details>
+            <summary>Who owns the accounts?</summary>
+            <p>We can host under our licenses for speed, or set up under yours. Either way, you retain access to your data.</p>
+          </details>
+          <details>
+            <summary>How much does it cost?</summary>
+            <p>Most gyms start under $1k setup with a light monthly plan ($250–$500). See pricing above for ballparks.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Get started</h2>
+        <p class="lead">Have a gym or fitness club? Let’s make bookings automatic.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://calendly.com/arjun-vynra/25min" target="_blank" rel="noopener noreferrer">Schedule a 25‑minute call</a>
+          <a class="btn secondary" href="mailto:arjun@vynra.agency">Email us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    <div style="max-width:900px;margin:0 auto;color:var(--muted)">&copy; 2025 Vynra™. All rights reserved.</div>
+    <div class="wrap">© 2025 Vynra™. All rights reserved.</div>
   </footer>
 
-  <div id="toast" class="toast" role="status" aria-live="polite" style="display:none">Message sent — we'll reply soon.</div>
-
+  <!-- Scripts -->
   <script>
     // Smooth scroll for internal links
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const href=a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
-        }
+        if(href.length>1){e.preventDefault();document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});}
       })
     })
-
-    // prefer-reduced-motion: if user prefers reduced motion, do not add animation class
-    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      document.documentElement.classList.add('animations-enabled');
-    }
-  </script>
-  <script>
-  // Minimal JS kept.
   </script>
 
-  <!-- Calendly: simple link opens in a new tab; popup removed per user request -->
+  <!-- JSON-LD (basic Organization schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vynra",
+    "url": "https://vynra.agency",
+  "logo": "VynraLogo.png",
+  "description": "AI receptionist and automation for gyms & fitness clubs."
+  }
+  </script>
 </body>
 </html>
